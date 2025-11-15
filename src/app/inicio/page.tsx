@@ -124,7 +124,7 @@ export default function InicioPage() {
           <input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="¿Qué lavamos hoy?"S
+            placeholder="¿Qué lavamos hoy?"
             className="flex-1 h-11 rounded-full border border-blue-200 bg-white px-4 text-[15px] shadow-sm outline-none focus:ring-2 focus:ring-wash-primary"
           />
           <button
@@ -164,9 +164,7 @@ export default function InicioPage() {
 
       {/* ===== Pedido (usa tus validaciones internas) ===== */}
       <section className="mx-auto max-w-5xl px-4 mt-8">
-        <PedidoSection
-          items={carrito}
-        />
+        <PedidoSection />
       </section>
     </main>
   );

@@ -1,8 +1,8 @@
 // src/app/login/page.tsx
 
 import React from "react";
-import Input from "@/components/Input";
-import Button from "@/components/Button";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 export default function LoginPage() {
   return (
     <div className="min-h-screen flex flex-col bg-[#FFF5D7]">

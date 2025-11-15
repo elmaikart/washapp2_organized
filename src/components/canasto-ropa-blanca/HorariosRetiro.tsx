@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { CalendarDays, Clock, MapPin } from "lucide-react";
+import { CalendarDays, Clock } from "lucide-react";
 import { isSunday, esFeriado, getBusinessWindow } from "@/logic/validaciones";
-import { Label } from "@/components/ui/Label";
-import { Input } from "@/components/ui/Input";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
 import TimeBlock from "@/components/canasto-ropa-blanca/TimeBlock";
 
 interface Props {
@@ -14,8 +14,6 @@ interface Props {
   setHoraInicioRetiro: (v: string) => void;
   horaFinRetiro: string;
   setHoraFinRetiro: (v: string) => void;
-  direccionRetiro: string;
-  setDireccionRetiro: (v: string) => void;
 }
 
 export default function HorariosRetiro({
@@ -25,8 +23,6 @@ export default function HorariosRetiro({
   setHoraInicioRetiro,
   horaFinRetiro,
   setHoraFinRetiro,
-  direccionRetiro,
-  setDireccionRetiro,
 }: Props) {
   const [ventana, setVentana] = useState<{ apertura: number; cierre: number } | null>(null);
 
@@ -54,7 +50,9 @@ export default function HorariosRetiro({
       )}
 
       {diaInhabilitado && (
-        <p className="text-yellow-600 text-sm">⚠️ No se realizan retiros los domingos ni feriados.</p>
+        <p className="text-yellow-600 text-sm">
+          ⚠️ No se realizan retiros los domingos ni feriados.
+        </p>
       )}
 
       {/* 📅 Fecha */}
@@ -81,21 +79,6 @@ export default function HorariosRetiro({
           setHoraFin={setHoraFinRetiro}
           tipo="Retiro"
         />
-      </div>
-
-      {/* 📍 Dirección */}
-      <div className="flex flex-col gap-1 mt-2">
-        <Label className="text-sm font-medium text-gray-600">Dirección de Retiro</Label>
-        <div className="relative">
-          <MapPin className="absolute left-3 top-2.5 text-wash-primary w-4 h-4" />
-          <Input
-            type="text"
-            placeholder="Ej: Av. Patria 1480"
-            value={direccionRetiro}
-            onChange={(e) => setDireccionRetiro(e.target.value)}
-            className="pl-9"
-          />
-        </div>
       </div>
     </div>
   );

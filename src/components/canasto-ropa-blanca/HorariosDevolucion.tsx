@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { CalendarDays, Clock, MapPin } from "lucide-react";
+import { CalendarDays, Clock } from "lucide-react";
 import { calcularFranjaDevolucion, esFeriado, isSunday } from "@/logic/validaciones";
-import { Label } from "@/components/ui/Label";
-import { Input } from "@/components/ui/Input";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
 import TimeBlock from "@/components/canasto-ropa-blanca/TimeBlock";
 
 interface Props {
@@ -16,8 +16,6 @@ interface Props {
   setHoraInicioDevolucion: (v: string) => void;
   horaFinDevolucion: string;
   setHoraFinDevolucion: (v: string) => void;
-  direccionDevolucion: string;
-  setDireccionDevolucion: (v: string) => void;
 }
 
 export default function HorariosDevolucion({
@@ -29,8 +27,6 @@ export default function HorariosDevolucion({
   setHoraInicioDevolucion,
   horaFinDevolucion,
   setHoraFinDevolucion,
-  direccionDevolucion,
-  setDireccionDevolucion,
 }: Props) {
   useEffect(() => {
     if (fechaRetiro && horaInicioRetiro) {
@@ -51,7 +47,9 @@ export default function HorariosDevolucion({
       </div>
 
       {diaInhabilitado && (
-        <p className="text-yellow-600 text-sm">⚠️ No se realizan devoluciones los domingos ni feriados.</p>
+        <p className="text-yellow-600 text-sm">
+          ⚠️ No se realizan devoluciones los domingos ni feriados.
+        </p>
       )}
 
       {/* 📅 Fecha */}
@@ -80,22 +78,6 @@ export default function HorariosDevolucion({
           tipo="Devolución"
           disabled={diaInhabilitado}
         />
-      </div>
-
-      {/* 📍 Dirección */}
-      <div className="flex flex-col gap-1 mt-2">
-        <Label className="text-sm font-medium text-gray-600">Dirección de Devolución</Label>
-        <div className="relative">
-          <MapPin className="absolute left-3 top-2.5 text-wash-primary w-4 h-4" />
-          <Input
-            type="text"
-            placeholder="Ej: misma u otra dirección"
-            value={direccionDevolucion}
-            onChange={(e) => setDireccionDevolucion(e.target.value)}
-            className="pl-9"
-            disabled={diaInhabilitado}
-          />
-        </div>
       </div>
     </div>
   );

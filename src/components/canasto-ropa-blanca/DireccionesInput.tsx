@@ -238,7 +238,7 @@ export default function DireccionesInput({
         )}
 
         {!editing && verified && (
-          <Check className="w-4 h-4 text-green-600" title="Dirección verificada" />
+          <Check className="w-4 h-4 text-green-600" aria-label="Dirección verificada" />
         )}
       </div>
 

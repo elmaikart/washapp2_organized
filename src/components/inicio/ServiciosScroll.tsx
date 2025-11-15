@@ -45,8 +45,11 @@ const Icono: React.FC<{ id: string; active?: boolean }> = ({ id, active }) => {
       return <Package className={cls} />;
     case "cortinas":
       return <Bath className={cls} />;
+
+    // 🔧 FIX: "planchado" → ícono Shirt (IroningBoard no existe)
     case "planchado":
-      return <Iron className={cls} />;
+      return <Shirt className={cls} />;
+
     case "tintoreria":
       return <Sparkles className={cls} />;
     case "alfombras":
@@ -60,7 +63,6 @@ const Icono: React.FC<{ id: string; active?: boolean }> = ({ id, active }) => {
 
 /* === Componente principal del scroll === */
 const ServiciosScroll: React.FC<Props> = ({ servicios, activo, onSelect }) => {
-  // Mostrar los 12 servicios, pero visibles 5 por vez (scroll horizontal)
   return (
     <div className="relative w-full overflow-hidden">
       <div
